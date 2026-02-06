@@ -36,5 +36,11 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
             Destroy(gameObject);
         }
     }
-    protected abstract void OnSceneLoad(Scene scene, LoadSceneMode mode);
+
+     protected abstract void OnSceneLoad(Scene scene, LoadSceneMode mode);
+
+    protected virtual void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+    }
 }
