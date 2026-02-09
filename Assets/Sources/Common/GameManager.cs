@@ -8,12 +8,30 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject settingsPanelPrefab;
     private Canvas _canvas;
 
+    // Game Logic
+    private GameLogic _gameLogic;
+
     // Type of Game (Single, Dual)
     private GameType _gameType;
 
     protected override void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
+        // refer to Cavas from new Scene
         _canvas = FindFirstObjectByType<Canvas>();
+
+        Debug.Log("::: OnSceneLoad()");
+
+        if (scene.name == SCENE_GAME)
+        {
+            var blockController = FindFirstObjectByType<BlockController>();
+            if (blockController != null)
+            {
+                blockController.InitBlocks();
+            }
+
+            // Create game logic
+            _gameLogic = new GameLogic(GameType.DualPlay, blockController);
+        }
     }
 
     // Open to Settings Panel
