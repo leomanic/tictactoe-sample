@@ -7,7 +7,7 @@ public class AIState : BaseState
 
     }
 
-    public override void HandleNextTurn()
+    public override void HandleNextTurn(GameLogic gameLogic)
     {
         
     }
@@ -17,7 +17,7 @@ public class AIState : BaseState
 
     }
 
-    public override void OnExit()
+    public override void OnExit(GameLogic gameLogic)
     {
 
     }

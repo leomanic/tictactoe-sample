@@ -45,13 +45,38 @@ public class GameLogic
     // Call by method when turn changed (State transition method)
     public void SetState(BaseState newState)
     {
-        _currentState?.OnExit();
+        _currentState?.OnExit(this);
         _currentState = newState;
         _currentState.OnEnter(this);
     }
 
-    public void PlaceMarker(int index, PlayerType playerType)
+    // Method for Mark marker
+    public bool PlaceMarker(int index, PlayerType playerType)
     {
+        // Convert coordinate values to index values
+        var row = index / BOARD_SIZE;
+        var col = index % BOARD_SIZE;
+
+        // Prevent duplication clicks
+        if (_board[row, col] != Constants.PlayerType.None) return false;
+
         blockController.PlaceMarker(index, playerType);
+
+        _board[row, col] = playerType;
+
+        return true;
+    }
+
+    // Change Turn
+    public void ChangeGameState()
+    {
+        if (_currentState == playerAState)
+        {
+            SetState(playerBState);
+        }
+        else
+        {
+            SetState(playerAState);
+        }
     }
 }

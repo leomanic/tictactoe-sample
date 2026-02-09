@@ -10,14 +10,15 @@ public class PlayerState : BaseState
         _playerType = isFirstPlayer ? Constants.PlayerType.Player1 : Constants.PlayerType.Player2;
     }
 
+    // Change Turn
     public override void HandleMove(GameLogic gameLogic, int index)
     {
         ProcessMove(gameLogic, index, _playerType);
     }
 
-    public override void HandleNextTurn()
+    public override void HandleNextTurn(GameLogic gameLogic)
     {
-
+        gameLogic.ChangeGameState();
     }
 
     public override void OnEnter(GameLogic gameLogic)
@@ -29,7 +30,7 @@ public class PlayerState : BaseState
         };
     }
 
-    public override void OnExit()
+    public override void OnExit(GameLogic gameLogic)
     {
 
     }
