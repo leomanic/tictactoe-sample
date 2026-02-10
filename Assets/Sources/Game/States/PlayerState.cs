@@ -28,6 +28,9 @@ public class PlayerState : BaseState
             // Process logic when Clicked block
             HandleMove(gameLogic, blockIndex);
         };
+
+        // Update Game O/X UI
+        GameManager.Instance.SetGameTurn(_playerType);
     }
 
     public override void OnExit(GameLogic gameLogic)

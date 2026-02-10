@@ -177,13 +177,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136309705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 854263483}
-  m_Father: {fileID: 432490711}
+  m_Father: {fileID: 1725223169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -490,7 +490,6 @@ RectTransform:
   - {fileID: 1675651321}
   - {fileID: 1615453593}
   - {fileID: 461532416}
-  - {fileID: 136309706}
   m_Father: {fileID: 1725223169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -1576,6 +1575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   settingsPanelPrefab: {fileID: 1446542601771219216, guid: 476c36483254d754997a5d4d8ad48786, type: 3}
+  confirmPanelPrefab: {fileID: 1446542601771219216, guid: 500b35c790e1d5e48803fe20c6ccb545, type: 3}
 --- !u!4 &922644409
 Transform:
   m_ObjectHideFlags: 0
@@ -3027,6 +3027,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 432490711}
+  - {fileID: 136309706}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3046,6 +3047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bf60032eaa9fc448eb26fdfd95b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamePanelController
+  playerA_Image: {fileID: 992906222}
+  playerB_Image: {fileID: 668122384}
 --- !u!114 &1731495408 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1118515409248613518, guid: 82cd2da0b47f614439bffd2b89d03bff, type: 3}

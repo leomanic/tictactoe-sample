@@ -6,7 +6,11 @@ public class GameManager : Singleton<GameManager>
 {
 
     [SerializeField] private GameObject settingsPanelPrefab;
+    [SerializeField] private GameObject confirmPanelPrefab;
     private Canvas _canvas;
+
+    // Game UI Controller    
+    private GamePanelController _gamePanelController;
 
     // Game Logic
     private GameLogic _gameLogic;
@@ -29,9 +33,18 @@ public class GameManager : Singleton<GameManager>
                 blockController.InitBlocks();
             }
 
+            // refer to GamePanelController
+            _gamePanelController = FindFirstObjectByType<GamePanelController>();
+
             // Create game logic
             _gameLogic = new GameLogic(GameType.DualPlay, blockController);
         }
+    }
+
+    // Update Game O/X UI
+    public void SetGameTurn(PlayerType playerType)
+    {
+        _gamePanelController.SetPlayerTurnPanel(playerType);
     }
 
     // Open to Settings Panel
@@ -44,6 +57,13 @@ public class GameManager : Singleton<GameManager>
         var settingsPanelObject = Instantiate(settingsPanelPrefab, _canvas.transform);
         settingsPanelObject.GetComponent<SettingsPanelController>().Show();
     }
+
+    // Open to Confirm Panel
+    public void OpenConfirmPanel(string message, ConfirmPanelController.OnConfirmButtonClicked onConfirmButtonClicked)
+    {
+        var confirmPanelObject = Instantiate(confirmPanelPrefab, _canvas.transform);
+        confirmPanelObject.GetComponent<ConfirmPanelController>().Show(message, onConfirmButtonClicked);
+      }
 
     // Scene transition
     public void ChangeToGameScene(GameType gameType)
