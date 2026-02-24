@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   settingsPanelPrefab: {fileID: 1446542601771219216, guid: 476c36483254d754997a5d4d8ad48786, type: 3}
-  canvas: {fileID: 1393111608}
+  confirmPanelPrefab: {fileID: 1446542601771219216, guid: 500b35c790e1d5e48803fe20c6ccb545, type: 3}
 --- !u!1 &185491399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3177cbd8742b9c14d98ac62c484b28d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainPanelController
+  signupPanelPrefab: {fileID: 1446542601771219216, guid: 9ccb1334532af9d4b85406350aeef113, type: 3}
+  signinPanelPrefab: {fileID: 1446542601771219216, guid: 7545c264d7092be48bd74d8b9cbb936f, type: 3}
 --- !u!1 &1505449976
 GameObject:
   m_ObjectHideFlags: 0

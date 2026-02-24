@@ -780,7 +780,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6197917613208204501}
         m_TargetAssemblyTypeName: SettingsPanelController, Assembly-CSharp
-        m_MethodName: Hide
+        m_MethodName: OnClickCloseButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

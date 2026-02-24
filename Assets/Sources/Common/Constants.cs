@@ -8,4 +8,7 @@ public static class Constants
 
     // Size of Board
     public const int BOARD_SIZE = 3;
+
+    // Server address
+    public const string ServerURL = "http://localhost:3000";
 }
