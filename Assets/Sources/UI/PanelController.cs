@@ -37,7 +37,7 @@ public class PanelController : MonoBehaviour
         _canvasGroup.DOFade(0, 0.3f).SetEase(Ease.Linear);
         panelTransform.DOScale(0, 1f).SetEase(Ease.InBack).OnComplete(() =>
         {
-            onComplete.Invoke();
+            onComplete?.Invoke();
             Destroy(gameObject);
         });
     }
