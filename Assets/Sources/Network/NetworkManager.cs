@@ -212,7 +212,7 @@ public class NetworkManager : Singleton<NetworkManager>
             }
             else
             {
-                var resultString = www. downloadHandler.text;
+                var resultString = www.downloadHandler.text;
                 var result = JsonUtility.FromJson<ScoreResult>(resultString);
                 Debug.Log("Score: " + result.score);
 

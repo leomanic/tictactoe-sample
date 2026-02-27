@@ -1,4 +1,5 @@
 using static Constants;
+using UnityEngine;
 
 public class GameLogic
 {
@@ -11,6 +12,9 @@ public class GameLogic
 
     // A variable that represents the current state
     private BaseState _currentState;
+
+    private MultiplayManager _multiplayManager;
+    private string _multiplayRoomId;
 
     // Result of Game
     public enum GameResult {None, Win, Lose, Draw}
@@ -42,6 +46,41 @@ public class GameLogic
                 
                 // Initial State Setup (Start Player A)
                 SetState(playerAState);
+                break;
+            case GameType.MultiPlay:
+                // Multi-player mode initialization task
+                _multiplayManager = new MultiplayManager((state, roomId) =>
+                {
+                    _multiplayRoomId = roomId;
+                    switch (state)
+                    {
+                        case MultiplayManagerState.CreateRoom:
+                            Debug.Log("방 생성됨, 방 ID " + roomId);
+                            break;
+
+                        case MultiplayManagerState.JoinRoom:
+                            Debug.Log("방 참가됨, 방 ID " + roomId);
+                            playerAState = new MultiplayerState(true, _multiplayManager);
+                            playerBState = new PlayerState(false);
+                            SetState(playerAState);
+                            break;
+
+                        case MultiplayManagerState.StartGame:
+                            Debug.Log("게임 시작됨, 방 ID " + roomId);
+                            playerAState = new PlayerState(true, _multiplayManager, roomId);
+                            playerBState = new MultiplayerState(false, _multiplayManager);
+                            SetState(playerAState);
+                            break;
+
+                        case MultiplayManagerState.ExitRoom:
+                            Debug.Log("본인이 방을 나감, 방 ID " + roomId);
+                            break;
+
+                        case MultiplayManagerState.EndGame:
+                            Debug.Log("상대방이 접속 끊음, 방 ID " + roomId);
+                            break;
+                    }
+                });
                 break;
         }
     }
