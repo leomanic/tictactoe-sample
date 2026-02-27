@@ -55,29 +55,29 @@ public class GameLogic
                     switch (state)
                     {
                         case MultiplayManagerState.CreateRoom:
-                            Debug.Log("방 생성됨, 방 ID " + roomId);
+                            Debug.Log("방 생성됨, 방 ID " + _multiplayRoomId);
                             break;
 
                         case MultiplayManagerState.JoinRoom:
-                            Debug.Log("방 참가됨, 방 ID " + roomId);
+                            Debug.Log("방 참가됨, 방 ID " + _multiplayRoomId);
                             playerAState = new MultiplayerState(true, _multiplayManager);
                             playerBState = new PlayerState(false);
                             SetState(playerAState);
                             break;
 
                         case MultiplayManagerState.StartGame:
-                            Debug.Log("게임 시작됨, 방 ID " + roomId);
-                            playerAState = new PlayerState(true, _multiplayManager, roomId);
+                            Debug.Log("게임 시작됨, 방 ID " + _multiplayRoomId);
+                            playerAState = new PlayerState(true, _multiplayManager, _multiplayRoomId);
                             playerBState = new MultiplayerState(false, _multiplayManager);
                             SetState(playerAState);
                             break;
 
                         case MultiplayManagerState.ExitRoom:
-                            Debug.Log("본인이 방을 나감, 방 ID " + roomId);
+                            Debug.Log("본인이 방을 나감, 방 ID " + _multiplayRoomId);
                             break;
 
                         case MultiplayManagerState.EndGame:
-                            Debug.Log("상대방이 접속 끊음, 방 ID " + roomId);
+                            Debug.Log("상대방이 접속 끊음, 방 ID " + _multiplayRoomId);
                             break;
                     }
                 });
@@ -157,5 +157,11 @@ public class GameLogic
         {
            GameManager.Instance.ChangeToMainScene(); 
         });
+    }
+
+    public void Dispose()
+    {
+        _multiplayManager?.LeaveRoom(_multiplayRoomId);
+        _multiplayManager?.Dispose();
     }
 }

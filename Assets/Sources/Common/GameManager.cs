@@ -74,6 +74,8 @@ public class GameManager : Singleton<GameManager>
 
     public void ChangeToMainScene()
     {
+        _gameLogic?.Dispose();
+        _gameLogic = null;
         SceneManager.LoadScene(SCENE_MAIN);        
     }
 }

@@ -28,7 +28,7 @@ public class PlayerState : BaseState
     {
         ProcessMove(gameLogic, index, _playerType);
         
-        // When multiplay, Other player to transfer position info 
+        // When multiplay, Transfer position info to other player
         if (_isMultiplayer)
         {
             _multiplayManager.SendPlayerMove(_multiplayRoomId, index);            
